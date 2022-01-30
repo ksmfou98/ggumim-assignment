@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { IProduct } from "types/product";
 import MagnifierList from "./MagnifierList";
+import SubImageList from "./SubImageList";
 
 interface IProductImageContentProps {
   products: IProduct;
@@ -19,6 +20,7 @@ function ProductImageContent({ products }: IProductImageContentProps) {
         <MainImage src={imageUrl} alt="mainImage" />
         <MagnifierList productList={productList} />
       </MainImageBlock>
+      <SubImageList productList={productList} />
     </Container>
   );
 }
