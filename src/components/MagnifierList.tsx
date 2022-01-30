@@ -1,7 +1,19 @@
 import React from "react";
+import { IProductItem } from "types/product";
+import MagnifierItem from "./MagnifierItem";
 
-function MagnifierList() {
-  return <div>MagnifierList</div>;
+interface IMagnifierListProps {
+  productList: IProductItem[];
+}
+
+function MagnifierList({ productList }: IMagnifierListProps) {
+  return (
+    <>
+      {productList.map((product) => (
+        <MagnifierItem key={product.productId} product={product} />
+      ))}
+    </>
+  );
 }
 
 export default MagnifierList;

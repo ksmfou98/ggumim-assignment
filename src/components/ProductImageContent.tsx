@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { IProduct } from "types/product";
+import MagnifierList from "./MagnifierList";
 
 interface IProductImageContentProps {
   products: IProduct;
@@ -10,11 +11,13 @@ interface IProductImageContentProps {
 // @Note selectedid 를 만들어서 선택된 돋보기 친구를 활성화 시켜줌
 function ProductImageContent({ products }: IProductImageContentProps) {
   console.log(products);
+  const { imageUrl, productList } = products;
 
   return (
     <Container>
       <MainImageBlock>
-        <MainImage src={products.imageUrl} alt="mainImage" />
+        <MainImage src={imageUrl} alt="mainImage" />
+        <MagnifierList productList={productList} />
       </MainImageBlock>
     </Container>
   );
