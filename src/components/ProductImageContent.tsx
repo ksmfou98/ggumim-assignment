@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import { IProduct } from "types/product";
 
 interface IProductImageContentProps {
@@ -9,7 +10,21 @@ interface IProductImageContentProps {
 function ProductImageContent({ products }: IProductImageContentProps) {
   console.log(products);
 
-  return <div>ProductImageContent</div>;
+  return (
+    <Container>
+      <MainImageBlock>
+        <MainImage src={products.imageUrl} alt="mainImage" />
+      </MainImageBlock>
+    </Container>
+  );
 }
+
+const Container = styled.div``;
+
+const MainImageBlock = styled.div``;
+
+const MainImage = styled.img`
+  width: 800px;
+`;
 
 export default ProductImageContent;

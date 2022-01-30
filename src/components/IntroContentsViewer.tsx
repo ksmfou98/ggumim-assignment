@@ -6,9 +6,9 @@ function IntroContentsViewer() {
   const { products } = useProductsLoad();
 
   return (
-    <div>
+    <>
       <ProductImageContent products={products} />
-    </div>
+    </>
   );
 }
 
