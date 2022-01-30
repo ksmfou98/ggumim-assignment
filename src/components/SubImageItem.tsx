@@ -1,9 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { IProductItem } from "types/product";
+import { SelectedImageIdType } from "./ProductImageContent";
 
-interface ISubImageItem {
+export interface ISubImageItem {
   product: IProductItem;
+  isSelected: boolean;
+  onSelectImage: (id: SelectedImageIdType) => void;
 }
 
 function SubImageItem({ product }: ISubImageItem) {

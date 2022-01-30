@@ -4,7 +4,6 @@ import ProductImageContent from "./ProductImageContent";
 
 function IntroContentsViewer() {
   const { products } = useProductsLoad();
-
   return (
     <>
       <ProductImageContent products={products} />

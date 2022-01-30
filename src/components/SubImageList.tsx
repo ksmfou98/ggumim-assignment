@@ -1,18 +1,30 @@
 import React from "react";
 import styled from "styled-components";
 import { IProductItem } from "types/product";
+import { SelectedImageIdType } from "./ProductImageContent";
 import SubImageItem from "./SubImageItem";
 
-interface ISubImageListProps {
+export interface ISubImageListProps {
   productList: IProductItem[];
+  onSelectImage: (id: SelectedImageIdType) => void;
+  selectedImageId: SelectedImageIdType;
 }
 
-function SubImageList({ productList }: ISubImageListProps) {
+function SubImageList({
+  productList,
+  onSelectImage,
+  selectedImageId,
+}: ISubImageListProps) {
   return (
     <Container>
       <Block>
         {productList.map((product) => (
-          <SubImageItem key={product.productId} product={product} />
+          <SubImageItem
+            key={product.productId}
+            product={product}
+            isSelected={selectedImageId === product.productId}
+            onSelectImage={onSelectImage}
+          />
         ))}
       </Block>
     </Container>

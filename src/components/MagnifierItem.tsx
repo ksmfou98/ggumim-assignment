@@ -1,18 +1,16 @@
 import React from "react";
-import { TagIcon } from "assets";
+import { CloseIcon, TagIcon } from "assets";
 import styled from "styled-components";
-import { IProductItem } from "types/product";
+import { ISubImageItem } from "./SubImageItem";
 
-interface IMagnifierItemProps {
-  product: IProductItem;
-}
+function MagnifierItem({ product, onSelectImage, isSelected }: ISubImageItem) {
+  const { pointX, pointY, productId } = product;
 
-function MagnifierItem({ product }: IMagnifierItemProps) {
-  const { pointX, pointY } = product;
+  const onToggleSelect = () => onSelectImage(isSelected ? null : productId);
 
   return (
-    <Block pointX={pointX} pointY={pointY}>
-      <MagnifierIcon src={TagIcon} alt="tag" />
+    <Block pointX={pointX} pointY={pointY} onClick={onToggleSelect}>
+      <MagnifierIcon src={isSelected ? CloseIcon : TagIcon} alt="tag" />
     </Block>
   );
 }
@@ -25,12 +23,12 @@ const Block = styled.div<{ pointX: number; pointY: number }>`
   height: 40px;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 `;
 
 const MagnifierIcon = styled.img`
   width: 32px;
   height: 32px;
-  cursor: pointer;
 `;
 
 export default MagnifierItem;
