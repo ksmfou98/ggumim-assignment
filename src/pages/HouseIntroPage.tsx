@@ -1,8 +1,13 @@
 import React from "react";
+import IntroContentsViewer from "components/IntroContentsViewer";
 import styled from "styled-components";
 
 function HouseIntroPage() {
-  return <Container>HouseIntroPage</Container>;
+  return (
+    <Container>
+      <IntroContentsViewer />
+    </Container>
+  );
 }
 
 const Container = styled.div`
