@@ -1,6 +1,6 @@
 import React from "react";
 import HouseIntroPage from "pages/HouseIntroPage";
-import GlobalStyles from "styles/globalStyles";
+import GlobalStyles from "lib/styles/globalStyles";
 
 function App() {
   return (
