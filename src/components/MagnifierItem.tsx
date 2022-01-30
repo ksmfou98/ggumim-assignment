@@ -2,16 +2,23 @@ import React from "react";
 import { CloseIcon, TagIcon } from "assets";
 import styled from "styled-components";
 import { ISubImageItem } from "./SubImageItem";
+import useOutSideClick from "hooks/useOutsideClick";
 
 function MagnifierItem({ product, onSelectImage, isSelected }: ISubImageItem) {
   const { pointX, pointY, productId } = product;
+  const { targetEl } = useOutSideClick(isSelected, onSelectImage);
 
-  const onToggleSelect = () => onSelectImage(isSelected ? null : productId);
+  const onToggleSelect = (e: React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation();
+    onSelectImage(isSelected ? null : productId);
+  };
 
   return (
-    <Block pointX={pointX} pointY={pointY} onClick={onToggleSelect}>
-      <MagnifierIcon src={isSelected ? CloseIcon : TagIcon} alt="tag" />
-    </Block>
+    <div ref={targetEl}>
+      <Block pointX={pointX} pointY={pointY} onClick={onToggleSelect}>
+        <MagnifierIcon src={isSelected ? CloseIcon : TagIcon} alt="tag" />
+      </Block>
+    </div>
   );
 }
 
