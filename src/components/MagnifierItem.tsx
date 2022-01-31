@@ -16,13 +16,14 @@ function MagnifierItem({
   imageSize,
 }: MagnifierItemProps) {
   const { pointX, pointY, productId } = product;
-  const manifierIcon = isSelected ? CloseIcon : TagIcon;
+  const magnifierIcon = isSelected ? CloseIcon : TagIcon;
+  const magnifierIconAlt = isSelected ? "close" : "tag";
 
   const onToggleSelect = () => onSelectImage(isSelected ? null : productId);
 
   return (
     <Block pointX={pointX} pointY={pointY} onClick={onToggleSelect}>
-      <MagnifierIcon src={manifierIcon} alt="tag" />
+      <MagnifierIcon src={magnifierIcon} alt={magnifierIconAlt} />
       {isSelected && <Tooltip product={product} imageSize={imageSize} />}
     </Block>
   );
