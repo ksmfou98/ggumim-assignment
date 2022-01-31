@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { IProduct } from "types/product";
 import MagnifierList from "./MagnifierList";
@@ -10,20 +10,30 @@ interface IProductImageContentProps {
 
 export type SelectedImageIdType = number | null;
 
-// @Note data 정보가 들어오면 재활용 가능하게 구현
-// @Note selectedid 를 만들어서 선택된 돋보기 친구를 활성화 시켜줌
+export type ImageSizeTypes = {
+  width: number;
+  height: number;
+};
+
 function ProductImageContent({ products }: IProductImageContentProps) {
   console.log(products);
+  const imageRef = useRef<HTMLImageElement>(null);
   const { imageUrl, productList } = products;
   const [selectedImageId, setSelectedImageId] =
     useState<SelectedImageIdType>(null);
 
   const onSelectImage = (id: SelectedImageIdType) => setSelectedImageId(id);
 
+  const imageSize: ImageSizeTypes = {
+    width: imageRef.current?.clientWidth || 0,
+    height: imageRef.current?.clientHeight || 0,
+  };
+
   return (
     <Container>
       <MainImageBlock>
         <MainImage
+          ref={imageRef}
           src={imageUrl}
           alt="mainImage"
           onClick={() => onSelectImage(null)}
@@ -32,6 +42,7 @@ function ProductImageContent({ products }: IProductImageContentProps) {
           productList={productList}
           onSelectImage={onSelectImage}
           selectedImageId={selectedImageId}
+          imageSize={imageSize}
         />
       </MainImageBlock>
       <SubImageList
@@ -50,7 +61,7 @@ const MainImageBlock = styled.div`
 `;
 
 const MainImage = styled.img`
-  width: 800px;
+  width: 100%;
 `;
 
 export default ProductImageContent;

@@ -2,13 +2,18 @@ import { PointIcon } from "assets";
 import React from "react";
 import styled from "styled-components";
 import { IProductItem } from "types/product";
+import { ImageSizeTypes } from "./ProductImageContent";
 
 interface ITooltipProps {
   product: IProductItem;
+  imageSize: ImageSizeTypes;
 }
 
-function Tooltip({ product }: ITooltipProps) {
-  const { imageUrl, productName, outside, priceDiscount } = product;
+function Tooltip({ product, imageSize }: ITooltipProps) {
+  console.log("imageSize", imageSize);
+
+  const { imageUrl, productName, outside, priceDiscount, pointX, pointY } =
+    product;
   return <Container>Tooltip</Container>;
 }
 
