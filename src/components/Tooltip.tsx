@@ -32,8 +32,9 @@ function Tooltip({ product, imageSize }: ITooltipProps) {
       <TooltipDescription>
         <FurnitureName>{productName}</FurnitureName>
         <FurniturePrice>
+          {outside && <ExpectedPrice>예상가</ExpectedPrice>}
           <PriceDiscount>
-            <span>{discountRate}%</span>
+            {!outside && <span>{discountRate}%</span>}
             {comma(priceDiscount)}
           </PriceDiscount>
         </FurniturePrice>
@@ -135,6 +136,14 @@ const FurniturePrice = styled.div`
   display: flex;
   align-items: center;
   margin-top: 4px;
+`;
+
+const ExpectedPrice = styled.span`
+  color: #898f94;
+  font-size: 11px;
+  line-height: 1.2em;
+  font-weight: bold;
+  margin-right: 4px;
 `;
 
 const PriceDiscount = styled.div`
