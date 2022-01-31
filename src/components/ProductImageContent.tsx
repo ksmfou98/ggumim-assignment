@@ -23,7 +23,11 @@ function ProductImageContent({ products }: IProductImageContentProps) {
   return (
     <Container>
       <MainImageBlock>
-        <MainImage src={imageUrl} alt="mainImage" />
+        <MainImage
+          src={imageUrl}
+          alt="mainImage"
+          onClick={() => onSelectImage(null)}
+        />
         <MagnifierList
           productList={productList}
           onSelectImage={onSelectImage}
