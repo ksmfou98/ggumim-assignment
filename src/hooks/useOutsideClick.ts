@@ -1,10 +1,6 @@
-import { SelectedImageIdType } from "components/ProductImageContent";
 import { useCallback, useEffect, useRef } from "react";
 
-export default function useOutSideClick(
-  isOpen: boolean,
-  onClose: (id: SelectedImageIdType) => void
-) {
+export default function useOutSideClick(isOpen: boolean, onClose: () => void) {
   const targetEl = useRef<HTMLDivElement>(null);
 
   const onClickOutside = useCallback(
@@ -12,8 +8,7 @@ export default function useOutSideClick(
       const { target } = e;
       if (target instanceof Node) {
         if (isOpen && !targetEl.current?.contains(target)) {
-          console.log("Dd");
-          onClose(null);
+          onClose();
         }
       }
     },

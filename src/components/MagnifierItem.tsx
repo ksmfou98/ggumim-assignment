@@ -6,7 +6,7 @@ import useOutSideClick from "hooks/useOutsideClick";
 
 function MagnifierItem({ product, onSelectImage, isSelected }: ISubImageItem) {
   const { pointX, pointY, productId } = product;
-  const { targetEl } = useOutSideClick(isSelected, onSelectImage);
+  const { targetEl } = useOutSideClick(isSelected, () => onSelectImage(null));
 
   const onToggleSelect = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
