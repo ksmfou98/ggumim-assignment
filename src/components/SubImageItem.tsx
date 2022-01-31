@@ -9,11 +9,12 @@ export interface ISubImageItem {
   onSelectImage: (id: SelectedImageIdType) => void;
 }
 
-function SubImageItem({ product, isSelected }: ISubImageItem) {
-  const { imageUrl } = product;
+function SubImageItem({ product, isSelected, onSelectImage }: ISubImageItem) {
+  const { imageUrl, productId } = product;
+  const onToggleSelect = () => onSelectImage(isSelected ? null : productId);
 
   return (
-    <Container isSelected={isSelected}>
+    <Container isSelected={isSelected} onClick={onToggleSelect}>
       <ItemImage src={imageUrl} alt="subImage" />
     </Container>
   );

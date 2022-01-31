@@ -2,6 +2,7 @@ import React from "react";
 import { CloseIcon, TagIcon } from "assets";
 import styled from "styled-components";
 import { ISubImageItem } from "./SubImageItem";
+import Tooltip from "./Tooltip";
 
 function MagnifierItem({ product, onSelectImage, isSelected }: ISubImageItem) {
   const { pointX, pointY, productId } = product;
@@ -12,6 +13,7 @@ function MagnifierItem({ product, onSelectImage, isSelected }: ISubImageItem) {
   return (
     <Block pointX={pointX} pointY={pointY} onClick={onToggleSelect}>
       <MagnifierIcon src={manifierIcon} alt="tag" />
+      {isSelected && <Tooltip product={product} />}
     </Block>
   );
 }
