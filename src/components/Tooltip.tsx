@@ -1,6 +1,7 @@
-import { PointIcon } from "assets";
+import { ArrowRightIcon, PointIcon } from "assets";
+import { comma } from "lib/utils/comma";
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { IProductItem } from "types/product";
 import { ImageSizeTypes } from "./ProductImageContent";
 
@@ -12,12 +13,39 @@ interface ITooltipProps {
 function Tooltip({ product, imageSize }: ITooltipProps) {
   console.log("imageSize", imageSize);
 
-  const { imageUrl, productName, outside, priceDiscount, pointX, pointY } =
-    product;
-  return <Container>Tooltip</Container>;
+  const {
+    imageUrl,
+    productName,
+    outside,
+    priceDiscount,
+    pointX,
+    pointY,
+    discountRate,
+  } = product;
+
+  const isRight = imageSize.width / 2 < pointX;
+  const isTop = imageSize.height / 2 < pointY;
+
+  return (
+    <Container isRight={isRight} isTop={isTop}>
+      <TooltipImage src={imageUrl} alt="tooltip" />
+      <TooltipDescription>
+        <FurnitureName>{productName}</FurnitureName>
+        <FurniturePrice>
+          <PriceDiscount>
+            <span>{discountRate}%</span>
+            {comma(priceDiscount)}
+          </PriceDiscount>
+        </FurniturePrice>
+      </TooltipDescription>
+      <MoveIconBox>
+        <MoveIcon src={ArrowRightIcon} alt="이동" />
+      </MoveIconBox>
+    </Container>
+  );
 }
 
-const Container = styled.div`
+const Container = styled.div<{ isRight: boolean; isTop: boolean }>`
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -33,6 +61,7 @@ const Container = styled.div`
   box-shadow: 3px 3px 8px 0 rgb(0 0 0 / 20%);
   font-size: 14px;
   color: #4a4a4a;
+
   &::before {
     content: "";
     position: absolute;
@@ -45,6 +74,92 @@ const Container = styled.div`
     background-repeat: no-repeat;
     z-index: 1100;
   }
+
+  ${({ isTop }) =>
+    isTop &&
+    css`
+      top: unset;
+      bottom: 52px;
+      &::before {
+        top: unset;
+        bottom: -8px;
+        transform: rotate(180deg);
+      }
+    `}
+
+  ${({ isRight }) =>
+    isRight &&
+    css`
+      left: -160px;
+      &::before {
+        left: unset;
+        right: 34px;
+      }
+    `}
+`;
+
+const TooltipImage = styled.img`
+  flex-shrink: 0;
+  width: 70px;
+  height: 70px;
+  margin-right: 8px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+`;
+
+const TooltipDescription = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding-bottom: 2px;
+  overflow: hidden;
+  text-align: left;
+`;
+
+const FurnitureName = styled.div`
+  width: 100%;
+  color: #333c45;
+  text-overflow: ellipsis;
+  line-height: 1.3em;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: initial;
+`;
+
+const FurniturePrice = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+`;
+
+const PriceDiscount = styled.div`
+  display: flex;
+  align-items: center;
+  color: #181d1f;
+  font-size: 16px;
+  line-height: 1.2em;
+  font-weight: bold;
+  span {
+    color: #ff585d;
+    margin-right: 4px;
+  }
+`;
+
+const MoveIconBox = styled.div`
+  display: flex;
+  align-items: flex-end;
+  margin-top: auto;
+  margin-right: 2px;
+`;
+
+const MoveIcon = styled.img`
+  width: 20px;
+  height: 20px;
 `;
 
 export default Tooltip;
