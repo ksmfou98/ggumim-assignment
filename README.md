@@ -5,6 +5,11 @@
 ## [👉 배포 페이지 바로가기 👈]()
 
 <br />
+
+### [컴포넌트 테스트 코드 바로가기](https://github.com/ksmfou98/ggumim-assignment/tree/main/src/components/__test__)
+
+### [api & util함수 테스트 코드 바로가기](https://github.com/ksmfou98/ggumim-assignment/tree/main/src/lib/__test__)
+
 <br />
 
 ## 필수 구현 사항
@@ -36,6 +41,8 @@
 ## 참고 사항
 
 - 프로젝트 자체를 <b>집소개 기능</b> 도메인으로 생각해 `components` 폴더 내부에 따로 폴더를 만들지 않았습니다.
-- 필수 구현 사항을 토대로 UI 테스트 코드를 작성했습니다.
+- 필수 구현 사항을 토대로 <b>UI 테스트 코드</b>를 작성했습니다.
 - `api`, `utils 함수`의 <b>unit</b> 테스트를 진행했습니다.
 - `ProductImageContent` 컴포넌트에 `products` data만 넣어주면 <b>사진 가구 정보 컴포넌트</b>를 재활용 할 수 있게 구현 하였습니다.
+
+<br />
