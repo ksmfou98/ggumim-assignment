@@ -24,17 +24,22 @@ describe("MagnifierItem", () => {
     },
   };
 
-  test("선택되지 않았을 때 돋보기 이미지 나오는지 테스트", () => {
+  test("가구 정보가 있는 곳에 돋보기 모양 이미지가 나오는지 테스트", () => {
     render(<MagnifierItem {...initialProps} />);
     const img = screen.getByRole("img");
     expect(img).toHaveAttribute("src", TagIcon);
     expect(img).toHaveAttribute("alt", "tag");
   });
 
-  test("선택되었을 때는 엑스 이미지 나오는지 테스트", () => {
+  test("돋보기가 클릭되면 상품정보 tool tip이 나오면서 돋보기 모양이 엑스 이미지로 나오는지 테스트", () => {
     render(<MagnifierItem {...initialProps} isSelected={true} />);
-    const img = screen.getByRole("img", { name: "close" });
-    expect(img).toHaveAttribute("src", CloseIcon);
-    expect(img).toHaveAttribute("alt", "close");
+
+    const tooltipImg = screen.getByRole("img", { name: "tooltip" });
+    expect(tooltipImg).toHaveAttribute("src", initialProps.product.imageUrl);
+    expect(tooltipImg).toHaveAttribute("alt", "tooltip");
+
+    const closeImg = screen.getByRole("img", { name: "close" });
+    expect(closeImg).toHaveAttribute("src", CloseIcon);
+    expect(closeImg).toHaveAttribute("alt", "close");
   });
 });

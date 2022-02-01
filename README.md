@@ -4,8 +4,6 @@
 
 ## [👉 배포 페이지 바로가기 👈]()
 
-<br />
-
 ### [컴포넌트 테스트 코드 바로가기](https://github.com/ksmfou98/ggumim-assignment/tree/main/src/components/__test__)
 
 ### [api & util함수 테스트 코드 바로가기](https://github.com/ksmfou98/ggumim-assignment/tree/main/src/lib/__test__)
