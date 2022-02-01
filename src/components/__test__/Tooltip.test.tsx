@@ -21,6 +21,15 @@ describe("Tooltip", () => {
     },
   };
 
+  test("입점되지 않는 가구는 할인율이 없고, 예상가격이 나와 있는지 테스트", () => {
+    render(<Tooltip {...initialProps} />);
+
+    const discountRateEle = screen.queryByText(/%/);
+    expect(discountRateEle).toBeNull();
+
+    const expectedPriceEle = screen.getByText("예상가");
+    expect(expectedPriceEle).toBeInTheDocument();
+  });
 
   test("입점되어 있는 가구는 할인율이 표시되어 있는지 테스트", () => {
     const props = {
@@ -34,7 +43,7 @@ describe("Tooltip", () => {
 
     render(<Tooltip {...props} />);
 
-    const test = screen.getByText(`${props.product.discountRate}%`);
-    expect(test).toHaveTextContent(`${props.product.discountRate}%`);
+    const discountRateEle = screen.queryByText(/%/);
+    expect(discountRateEle).toHaveTextContent(`${props.product.discountRate}%`);
   });
 });

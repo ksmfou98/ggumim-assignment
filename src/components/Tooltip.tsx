@@ -34,7 +34,9 @@ function Tooltip({ product, imageSize }: ITooltipProps) {
         <FurniturePrice>
           {outside && <ExpectedPrice>예상가</ExpectedPrice>}
           <PriceDiscount>
-            {!outside && <span>{discountRate}%</span>}
+            {!outside && (
+              <span data-testid="discountRate">{discountRate}%</span>
+            )}
             {comma(priceDiscount)}
           </PriceDiscount>
         </FurniturePrice>
