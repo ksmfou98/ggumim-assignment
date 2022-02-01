@@ -55,4 +55,16 @@ describe("MagnifierList", () => {
     const toolTipEle = screen.queryAllByRole("img", { name: "tooltip" });
     expect(toolTipEle).toEqual([]);
   });
+
+  test("이미지가 선택되었을 때 tool tip이 하나만 나오는지 테스트", () => {
+    const props = {
+      ...initialProps,
+      selectedImageId: initialProps.productList[0].productId,
+    };
+
+    render(<MagnifierList {...props} />);
+
+    const toolTipEle = screen.getAllByRole("img", { name: "tooltip" });
+    expect(toolTipEle).toHaveLength(1);
+  });
 });
