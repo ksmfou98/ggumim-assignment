@@ -8,7 +8,7 @@ interface DiscountBadgeProps {
 
 function DiscountBadge({ discountRate }: DiscountBadgeProps) {
   return (
-    <Container>
+    <Container data-testid="discountBadge">
       {discountRate}
       <span>%</span>
     </Container>
