@@ -1,5 +1,5 @@
 import { ImageSizeTypes } from "hooks/useProductImageSize";
-import { roundToOne } from "lib/utils/round";
+import { getImageRatio } from "lib/getImageRatio";
 import React from "react";
 import MagnifierItem from "./MagnifierItem";
 import { ISubImageListProps } from "./SubImageList";
@@ -16,9 +16,7 @@ function MagnifierList({
   adjustedImageSize,
   originalImageSize,
 }: IMagnifierListProps) {
-  const imageWidthRatio = adjustedImageSize.width / originalImageSize.width;
-  const imageHeightRatio = adjustedImageSize.height / originalImageSize.height;
-  const ratioSum = roundToOne(imageWidthRatio) + roundToOne(imageHeightRatio);
+  const imageRatio = getImageRatio(originalImageSize, adjustedImageSize);
 
   return (
     <>
@@ -28,8 +26,8 @@ function MagnifierList({
           product={product}
           isSelected={selectedImageId === product.productId}
           onSelectImage={onSelectImage}
-          positionX={product.pointY * ratioSum + 11}
-          positionY={product.pointX * ratioSum}
+          positionX={product.pointY * imageRatio + 11}
+          positionY={product.pointX * imageRatio}
           adjustedImageSize={adjustedImageSize}
         />
       ))}
