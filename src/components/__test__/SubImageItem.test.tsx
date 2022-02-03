@@ -26,4 +26,15 @@ describe("SubImageItem", () => {
     expect(discountBadgeEle).toBeNull();
   });
 
+  test("할인율이 있을 경우 DiscountBadge가 있는지 테스트", () => {
+    render(
+      <SubImageItem
+        {...initialProps}
+        product={{ ...initialProps.product, discountRate: 10, outside: false }}
+      />
+    );
+
+    const discountBadgeEle = screen.queryByTestId("discountBadge");
+    expect(discountBadgeEle).toBeInTheDocument();
+  });
 });
