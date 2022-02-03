@@ -1,4 +1,5 @@
 import { BadgeIcon } from "assets";
+import palette from "lib/styles/palette";
 import React from "react";
 import styled from "styled-components";
 
@@ -28,7 +29,7 @@ const Container = styled.div`
   font-size: 11px;
   font-weight: bold;
   line-height: 25px;
-  color: white;
+  color: ${palette.white};
   text-align: center;
   padding-left: 1px;
   span {

@@ -1,3 +1,4 @@
+import palette from "lib/styles/palette";
 import React from "react";
 import styled, { css } from "styled-components";
 import { IProductItem } from "types/product";
@@ -33,12 +34,16 @@ const Container = styled.div<{ isSelected: boolean }>`
   ${({ isSelected }) =>
     isSelected &&
     css`
-      background: linear-gradient(163.54deg, #ff659e 8.22%, #f56b30 94.1%);
+      background: linear-gradient(
+        163.54deg,
+        ${palette.subImg_selected_bg1} 8.22%,
+        ${palette.subImg_selected_bg2} 94.1%
+      );
       margin: 26px 4px;
       padding: 2px;
       border-radius: 18px;
       img {
-        border: 0.5px solid white;
+        border: 0.5px solid ${palette.white};
       }
     `}
 `;
@@ -48,7 +53,7 @@ const ItemImage = styled.div<{ imageUrl: string }>`
   width: 106px;
   height: 106px;
   border-radius: 16px;
-  border: 0.5px solid #aaafb9;
+  border: 0.5px solid ${palette.border1};
   user-select: none;
   cursor: pointer;
   background-image: url(${({ imageUrl }) => imageUrl});

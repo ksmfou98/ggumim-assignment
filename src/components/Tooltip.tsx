@@ -1,4 +1,5 @@
 import { ArrowRightIcon, PointIcon } from "assets";
+import palette from "lib/styles/palette";
 import zIndexes from "lib/styles/zIndexes";
 import { comma } from "lib/utils/comma";
 import React from "react";
@@ -44,15 +45,14 @@ const Container = styled.div<{ isRight: boolean; isTop: boolean }>`
   position: absolute;
   top: 28px;
   left: -20px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: ${palette.bg_layer};
   width: 220px;
   height: 86px;
   padding: 8px 0 8px 8px;
   margin-top: 16px;
   border-radius: 7px;
-  box-shadow: 3px 3px 8px 0 rgb(0 0 0 / 20%);
+  box-shadow: 3px 3px 8px 0 ${palette.box_layer};
   font-size: 14px;
-  color: #4a4a4a;
 
   &::before {
     content: "";
@@ -113,7 +113,7 @@ const TooltipDescription = styled.div`
 
 const FurnitureName = styled.div`
   width: 100%;
-  color: #333c45;
+  color: ${palette.text3};
   text-overflow: ellipsis;
   line-height: 1.3em;
   display: -webkit-box;
@@ -130,7 +130,7 @@ const FurniturePrice = styled.div`
 `;
 
 const ExpectedPrice = styled.span`
-  color: #898f94;
+  color: ${palette.text2};
   font-size: 11px;
   line-height: 1.2em;
   font-weight: bold;
@@ -140,12 +140,12 @@ const ExpectedPrice = styled.span`
 const PriceDiscount = styled.div`
   display: flex;
   align-items: center;
-  color: #181d1f;
+  color: ${palette.text1};
   font-size: 16px;
   line-height: 1.2em;
   font-weight: bold;
   span {
-    color: #ff585d;
+    color: ${palette.text4};
     margin-right: 4px;
   }
 `;
