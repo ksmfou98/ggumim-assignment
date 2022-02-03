@@ -1,10 +1,10 @@
 import React from "react";
-import { CloseIcon, TagIcon } from "assets";
 import styled from "styled-components";
 import { ISubImageItem } from "./SubImageItem";
 import Tooltip from "./Tooltip";
 import { roundToThree } from "lib/utils/round";
 import { ImageSizeTypes } from "hooks/useProductImageSize";
+import { getMagnifierIcon } from "lib/getMagnifierIcon";
 
 interface MagnifierItemProps extends ISubImageItem {
   adjustedImageSize: ImageSizeTypes;
@@ -21,8 +21,7 @@ function MagnifierItem({
   positionY,
 }: MagnifierItemProps) {
   const { productId } = product;
-  const magnifierIcon = isSelected ? CloseIcon : TagIcon;
-  const magnifierIconAlt = isSelected ? "close" : "tag";
+  const { magnifierIcon, magnifierIconAlt } = getMagnifierIcon(isSelected);
   const isRight = adjustedImageSize.width / 2 < positionX;
   const isTop = adjustedImageSize.height / 2 < positionY;
 
