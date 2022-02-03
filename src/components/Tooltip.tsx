@@ -1,4 +1,5 @@
 import { ArrowRightIcon, PointIcon } from "assets";
+import zIndexes from "lib/styles/zIndexes";
 import { comma } from "lib/utils/comma";
 import React from "react";
 import styled, { css } from "styled-components";
@@ -37,7 +38,7 @@ function Tooltip({ product, isRight, isTop }: ITooltipProps) {
 }
 
 const Container = styled.div<{ isRight: boolean; isTop: boolean }>`
-  z-index: 1000;
+  z-index: ${zIndexes.Tooltip};
   display: flex;
   align-items: center;
   position: absolute;
@@ -63,7 +64,7 @@ const Container = styled.div<{ isRight: boolean; isTop: boolean }>`
     background-image: url(${PointIcon});
     background-size: cover;
     background-repeat: no-repeat;
-    z-index: 1100;
+    z-index: ${zIndexes.TooltipPoint};
   }
 
   ${({ isTop }) =>
