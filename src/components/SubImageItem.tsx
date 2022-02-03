@@ -52,6 +52,9 @@ const ItemImage = styled.div<{ imageUrl: string }>`
   position: relative;
   width: 106px;
   height: 106px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
   border-radius: 16px;
   border: 0.5px solid ${palette.border1};
   user-select: none;
