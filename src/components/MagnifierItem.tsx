@@ -22,8 +22,8 @@ function MagnifierItem({
 }: MagnifierItemProps) {
   const { productId } = product;
   const { magnifierIcon, magnifierIconAlt } = getMagnifierIcon(isSelected);
-  const isRight = adjustedImageSize.width / 2 < positionX;
-  const isTop = adjustedImageSize.height / 2 < positionY;
+  const isTooltipRight = adjustedImageSize.width / 2 < positionX;
+  const isTooltipTop = adjustedImageSize.height / 2 < positionY;
 
   const onToggleSelect = () => onSelectImage(isSelected ? null : productId);
 
@@ -31,7 +31,11 @@ function MagnifierItem({
     <Block positionY={positionY} positionX={positionX} onClick={onToggleSelect}>
       <MagnifierIcon src={magnifierIcon} alt={magnifierIconAlt} />
       {isSelected && (
-        <Tooltip product={product} isRight={isRight} isTop={isTop} />
+        <Tooltip
+          product={product}
+          isRight={isTooltipRight}
+          isTop={isTooltipTop}
+        />
       )}
     </Block>
   );
