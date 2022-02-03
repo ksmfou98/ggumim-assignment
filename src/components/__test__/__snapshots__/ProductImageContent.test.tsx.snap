@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductImageContent matches snapshot 1`] = `
+<div>
+  <div
+    class="sc-ksdxgE"
+  >
+    <div
+      class="sc-hBUSln eSbvKF"
+    >
+      <img
+        alt="mainImage"
+        class="sc-fotOHu kFHbar"
+        src="//cdn.ggumim.co.kr/cache/star/1000/2022011017094316oRcWeb8R.jpeg"
+      />
+      <div
+        class="sc-pVTFL bdhnqH"
+      >
+        <img
+          alt="tag"
+          class="sc-jrQzAO diZKiZ"
+          src="tagIcon.png"
+        />
+      </div>
+      <div
+        class="sc-pVTFL bdhnqH"
+      >
+        <img
+          alt="tag"
+          class="sc-jrQzAO diZKiZ"
+          src="tagIcon.png"
+        />
+      </div>
+      <div
+        class="sc-pVTFL bdhnqH"
+      >
+        <img
+          alt="tag"
+          class="sc-jrQzAO diZKiZ"
+          src="tagIcon.png"
+        />
+      </div>
+    </div>
+    <div
+      class="sc-egiyK licEs"
+    >
+      <div
+        class="sc-bqiRlB bWAaSl"
+      >
+        <div
+          class="sc-iqseJM aucdn"
+        >
+          <div
+            class="sc-crHmcD bSca-dc"
+          />
+        </div>
+        <div
+          class="sc-iqseJM aucdn"
+        >
+          <div
+            class="sc-crHmcD dAxqbr"
+          >
+            <div
+              class="sc-kDTinF cBxmeF"
+              data-testid="discountBadge"
+            >
+              38
+              <span>
+                %
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-iqseJM aucdn"
+        >
+          <div
+            class="sc-crHmcD bWTLgX"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
