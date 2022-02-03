@@ -18,10 +18,12 @@ describe("MagnifierItem", () => {
     },
     onSelectImage: () => {},
     isSelected: false,
-    imageSize: {
+    adjustedImageSize: {
       width: 800,
       height: 998,
     },
+    positionX: 327.267,
+    positionY: 777.6,
   };
 
   test("가구 정보가 있는 곳에 돋보기 모양 이미지가 나오는지 테스트", () => {

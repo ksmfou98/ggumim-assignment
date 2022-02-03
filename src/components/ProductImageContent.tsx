@@ -1,4 +1,5 @@
-import React, { useRef, useState } from "react";
+import useProductImageSize from "hooks/useProductImageSize";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { IProduct } from "types/product";
 import MagnifierList from "./MagnifierList";
@@ -10,24 +11,15 @@ interface IProductImageContentProps {
 
 export type SelectedImageIdType = number | null;
 
-export type ImageSizeTypes = {
-  width: number;
-  height: number;
-};
-
 function ProductImageContent({ products }: IProductImageContentProps) {
-  console.log(products);
-  const imageRef = useRef<HTMLImageElement>(null);
   const { imageUrl, productList } = products;
   const [selectedImageId, setSelectedImageId] =
     useState<SelectedImageIdType>(null);
 
   const onSelectImage = (id: SelectedImageIdType) => setSelectedImageId(id);
 
-  const imageSize: ImageSizeTypes = {
-    width: imageRef.current?.clientWidth || 0,
-    height: imageRef.current?.clientHeight || 0,
-  };
+  const { imageRef, adjustedImageSize, originalImageSize, onImageLoad } =
+    useProductImageSize();
 
   return (
     <Container>
@@ -37,12 +29,14 @@ function ProductImageContent({ products }: IProductImageContentProps) {
           src={imageUrl}
           alt="mainImage"
           onClick={() => onSelectImage(null)}
+          onLoad={onImageLoad}
         />
         <MagnifierList
           productList={productList}
           onSelectImage={onSelectImage}
           selectedImageId={selectedImageId}
-          imageSize={imageSize}
+          adjustedImageSize={adjustedImageSize}
+          originalImageSize={originalImageSize}
         />
       </MainImageBlock>
       <SubImageList

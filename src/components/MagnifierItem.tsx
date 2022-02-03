@@ -3,26 +3,28 @@ import { CloseIcon, TagIcon } from "assets";
 import styled from "styled-components";
 import { ISubImageItem } from "./SubImageItem";
 import Tooltip from "./Tooltip";
-import { ImageSizeTypes } from "./ProductImageContent";
-import { roundToThree } from "lib/utils/roundedToThree";
+import { roundToThree } from "lib/utils/round";
+import { ImageSizeTypes } from "hooks/useProductImageSize";
 
 interface MagnifierItemProps extends ISubImageItem {
-  imageSize: ImageSizeTypes;
+  adjustedImageSize: ImageSizeTypes;
+  positionX: number;
+  positionY: number;
 }
 
 function MagnifierItem({
   product,
   onSelectImage,
   isSelected,
-  imageSize,
+  adjustedImageSize,
+  positionX,
+  positionY,
 }: MagnifierItemProps) {
-  const { pointX, pointY, productId } = product;
+  const { productId } = product;
   const magnifierIcon = isSelected ? CloseIcon : TagIcon;
   const magnifierIconAlt = isSelected ? "close" : "tag";
-  const positionX = pointY * 1.6 + 11;
-  const positionY = pointX * 1.6;
-  const isRight = imageSize.width / 2 < positionX;
-  const isTop = imageSize.height / 2 < positionY;
+  const isRight = adjustedImageSize.width / 2 < positionX;
+  const isTop = adjustedImageSize.height / 2 < positionY;
 
   const onToggleSelect = () => onSelectImage(isSelected ? null : productId);
 

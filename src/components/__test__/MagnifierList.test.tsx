@@ -43,8 +43,12 @@ describe("MagnifierList", () => {
     ],
     selectedImageId: null,
     onSelectImage: () => {},
-    imageSize: {
+    adjustedImageSize: {
       width: 800,
+      height: 998,
+    },
+    originalImageSize: {
+      width: 1248,
       height: 998,
     },
   };
