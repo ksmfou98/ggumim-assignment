@@ -2,7 +2,7 @@
 
 <br />
 
-## [👉 배포 페이지 바로가기 👈]()
+## [👉 배포 페이지 바로가기 👈](https://loving-hawking-239697.netlify.app/)
 
 <br />
 
