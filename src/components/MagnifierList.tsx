@@ -1,5 +1,5 @@
 import { ImageSizeTypes } from "hooks/useProductImageSize";
-import { getImageRatio } from "lib/getImageRatio";
+import { getImageRatio } from "lib/utils/getImageRatio";
 import React from "react";
 import MagnifierItem from "./MagnifierItem";
 import { ISubImageListProps } from "./SubImageList";

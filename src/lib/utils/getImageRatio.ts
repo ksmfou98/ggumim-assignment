@@ -1,5 +1,5 @@
 import { ImageSizeTypes } from "hooks/useProductImageSize";
-import { roundToOne } from "./utils/round";
+import { roundToOne } from "./round";
 
 export const getImageRatio = (
   originalImageSize: ImageSizeTypes,

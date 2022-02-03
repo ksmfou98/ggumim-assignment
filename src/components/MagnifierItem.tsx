@@ -4,7 +4,7 @@ import { ISubImageItem } from "./SubImageItem";
 import Tooltip from "./Tooltip";
 import { roundToThree } from "lib/utils/round";
 import { ImageSizeTypes } from "hooks/useProductImageSize";
-import { getMagnifierIcon } from "lib/getMagnifierIcon";
+import { getMagnifierIcon } from "lib/utils/getMagnifierIcon";
 
 interface MagnifierItemProps extends ISubImageItem {
   adjustedImageSize: ImageSizeTypes;
