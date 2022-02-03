@@ -15,10 +15,8 @@ describe("Tooltip", () => {
       productId: 219762,
       productName: "애틱 타일 이지케어 발수러그",
     },
-    imageSize: {
-      width: 800,
-      height: 998,
-    },
+    isRight: false,
+    isTop: false,
   };
 
   test("입점되지 않는 가구는 할인율이 없고, 예상가격이 나와 있는지 테스트", () => {

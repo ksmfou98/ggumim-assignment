@@ -3,28 +3,16 @@ import { comma } from "lib/utils/comma";
 import React from "react";
 import styled, { css } from "styled-components";
 import { IProductItem } from "types/product";
-import { ImageSizeTypes } from "./ProductImageContent";
 
 interface ITooltipProps {
   product: IProductItem;
-  imageSize: ImageSizeTypes;
+  isRight: boolean;
+  isTop: boolean;
 }
 
-function Tooltip({ product, imageSize }: ITooltipProps) {
-  console.log("imageSize", imageSize);
-
-  const {
-    imageUrl,
-    productName,
-    outside,
-    priceDiscount,
-    pointX,
-    pointY,
-    discountRate,
-  } = product;
-
-  const isRight = imageSize.width / 2 < pointX;
-  const isTop = imageSize.height / 2 < pointY;
+function Tooltip({ product, isRight, isTop }: ITooltipProps) {
+  const { imageUrl, productName, outside, priceDiscount, discountRate } =
+    product;
 
   return (
     <Container isRight={isRight} isTop={isTop}>

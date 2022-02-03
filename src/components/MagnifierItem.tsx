@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { ISubImageItem } from "./SubImageItem";
 import Tooltip from "./Tooltip";
 import { ImageSizeTypes } from "./ProductImageContent";
+import { roundToThree } from "lib/utils/roundedToThree";
 
 interface MagnifierItemProps extends ISubImageItem {
   imageSize: ImageSizeTypes;
@@ -18,21 +19,27 @@ function MagnifierItem({
   const { pointX, pointY, productId } = product;
   const magnifierIcon = isSelected ? CloseIcon : TagIcon;
   const magnifierIconAlt = isSelected ? "close" : "tag";
+  const positionX = pointY * 1.6 + 11;
+  const positionY = pointX * 1.6;
+  const isRight = imageSize.width / 2 < positionX;
+  const isTop = imageSize.height / 2 < positionY;
 
   const onToggleSelect = () => onSelectImage(isSelected ? null : productId);
 
   return (
-    <Block pointX={pointX} pointY={pointY} onClick={onToggleSelect}>
+    <Block positionY={positionY} positionX={positionX} onClick={onToggleSelect}>
       <MagnifierIcon src={magnifierIcon} alt={magnifierIconAlt} />
-      {isSelected && <Tooltip product={product} imageSize={imageSize} />}
+      {isSelected && (
+        <Tooltip product={product} isRight={isRight} isTop={isTop} />
+      )}
     </Block>
   );
 }
 
-const Block = styled.div<{ pointX: number; pointY: number }>`
+const Block = styled.div<{ positionY: number; positionX: number }>`
   position: absolute;
-  top: ${(props) => props.pointY}px;
-  left: ${(props) => props.pointX}px;
+  left: ${({ positionX }) => roundToThree(positionX)}px;
+  top: ${({ positionY }) => roundToThree(positionY)}px;
   width: 40px;
   height: 40px;
   display: flex;
